@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Endearly — a quiet place to remember the people you love</title>
+<meta name="description" content="A private, offline iOS keepsake for the little things about the people you love — a favorite flower, a shoe size, a past gift. No account. No subscription. Nothing leaves your phone." />
+<link rel="canonical" href="https://endearly.app/" />
+<meta name="robots" content="index,follow" />
+
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F2E8" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2721" />
+
+<link rel="icon" type="image/png" sizes="180x180" href="assets/icon-180.png" />
+<link rel="apple-touch-icon" href="assets/icon-180.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Endearly" />
+<meta property="og:title" content="Endearly — remember the little things about the people you love" />
+<meta property="og:description" content="A quiet, private keepsake. No account. No subscription. Nothing leaves your phone." />
+<meta property="og:url" content="https://endearly.app/" />
+<meta property="og:image" content="https://endearly.app/assets/icon-512.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Endearly — remember the little things about the people you love" />
+<meta name="twitter:description" content="A quiet, private keepsake. No account. No subscription. Nothing leaves your phone." />
+<meta name="twitter:image" content="https://endearly.app/assets/icon-512.png" />
+<style>
+  /* ── Palette: pulled verbatim from Endearly/Support/Tokens.swift ──────────── */
+  :root {
+    --paper:#F7F2E8; --ink:#2E2A24; --ink-soft:#6B6459; --ink-faint:#98907F;
+    --line:#E2D9C6; --line-strong:#D3C8B0;
+    --sage:#6E7B5B; --sage-tint:#E6E9DC;
+    --rose:#B4715E; --rose-tint:#F0E1DA;
+    --gold:#A2823F; --gold-tint:#EEE4CB;
+    --av1:#DCE0CE; --av2:#EDDCCF; --av3:#E3DDCB; --av4:#DED8CB;
+    --shadow: 0 1px 2px rgba(46,42,36,.04), 0 8px 30px rgba(46,42,36,.06);
+    --serif: ui-serif, "New York", Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+    --mono: ui-monospace, "SF Mono", "Menlo", monospace;
+    --measure: 62ch;
+    --step--1: clamp(.82rem, .8rem + .1vw, .9rem);
+    --step-0: clamp(1rem, .96rem + .2vw, 1.12rem);
+    --step-1: clamp(1.2rem, 1.1rem + .5vw, 1.5rem);
+    --step-2: clamp(1.6rem, 1.4rem + 1vw, 2.2rem);
+    --step-3: clamp(2.3rem, 1.9rem + 2.4vw, 3.8rem);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:#2B2721; --ink:#ECE5D6; --ink-soft:#ADA491; --ink-faint:#7C7566;
+      --line:#39342C; --line-strong:#443E34;
+      --sage:#A0AC83; --sage-tint:#33392B;
+      --rose:#CE9481; --rose-tint:#3B302B;
+      --gold:#CBA968; --gold-tint:#39311F;
+      --av1:#3A4030; --av2:#43352C; --av3:#3C3A2C; --av4:#3A362D;
+      --shadow: 0 1px 2px rgba(0,0,0,.2), 0 10px 34px rgba(0,0,0,.32);
+    }
+  }
+  :root[data-theme="light"] {
+    --paper:#F7F2E8; --ink:#2E2A24; --ink-soft:#6B6459; --ink-faint:#98907F;
+    --line:#E2D9C6; --line-strong:#D3C8B0; --sage:#6E7B5B; --sage-tint:#E6E9DC;
+    --rose:#B4715E; --rose-tint:#F0E1DA; --gold:#A2823F; --gold-tint:#EEE4CB;
+    --av1:#DCE0CE; --av2:#EDDCCF; --av3:#E3DDCB; --av4:#DED8CB;
+    --shadow: 0 1px 2px rgba(46,42,36,.04), 0 8px 30px rgba(46,42,36,.06);
+  }
+  :root[data-theme="dark"] {
+    --paper:#2B2721; --ink:#ECE5D6; --ink-soft:#ADA491; --ink-faint:#7C7566;
+    --line:#39342C; --line-strong:#443E34; --sage:#A0AC83; --sage-tint:#33392B;
+    --rose:#CE9481; --rose-tint:#3B302B; --gold:#CBA968; --gold-tint:#39311F;
+    --av1:#3A4030; --av2:#43352C; --av3:#3C3A2C; --av4:#3A362D;
+    --shadow: 0 1px 2px rgba(0,0,0,.2), 0 10px 34px rgba(0,0,0,.32);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:var(--step-0); line-height:1.6;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap { width:min(100% - 2.5rem, 68rem); margin-inline:auto; }
+  .col  { width:min(100%, var(--measure)); }
+  h1,h2,h3 { font-family:var(--serif); font-weight:600; line-height:1.12;
+             text-wrap:balance; margin:0; letter-spacing:-.01em; }
+  p { margin:0; }
+  a { color:inherit; }
+  .eyebrow { font-family:var(--mono); font-size:var(--step--1);
+    letter-spacing:.16em; text-transform:uppercase; color:var(--sage);
+    display:inline-block; }
+  .muted { color:var(--ink-soft); }
+  .faint { color:var(--ink-faint); }
+
+  /* ── Top bar ──────────────────────────────────────────────────────────────── */
+  header.bar {
+    position:sticky; top:0; z-index:20; backdrop-filter:saturate(1.1) blur(8px);
+    background:color-mix(in srgb, var(--paper) 86%, transparent);
+    border-bottom:1px solid var(--line);
+  }
+  .bar-in { display:flex; align-items:center; gap:1rem; padding:.7rem 0; }
+  .brand { display:flex; align-items:center; gap:.6rem; font-family:var(--serif);
+    font-size:var(--step-1); font-weight:600; }
+  .brand img { width:1.7em; height:1.7em; border-radius:23%; box-shadow:var(--shadow); }
+  .bar-spacer { flex:1; }
+  .chip {
+    font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--gold); background:var(--gold-tint); border:1px solid var(--line-strong);
+    padding:.32rem .6rem; border-radius:999px; white-space:nowrap;
+  }
+  .lang {
+    display:inline-flex; border:1px solid var(--line-strong); border-radius:999px;
+    overflow:hidden; font-family:var(--mono); font-size:.72rem;
+  }
+  .lang button {
+    appearance:none; border:0; background:transparent; color:var(--ink-soft);
+    padding:.34rem .62rem; cursor:pointer; font:inherit; letter-spacing:.06em;
+  }
+  .lang button[aria-pressed="true"] { background:var(--sage); color:var(--paper); }
+  .lang button:focus-visible, a:focus-visible, .link:focus-visible {
+    outline:2px solid var(--sage); outline-offset:3px; border-radius:4px;
+  }
+
+  /* ── Rhythm ───────────────────────────────────────────────────────────────── */
+  section { padding-block: clamp(3.5rem, 8vh, 6rem); }
+  .rule { border:0; border-top:1px solid var(--line); margin:0; }
+
+  /* ── Hero ─────────────────────────────────────────────────────────────────── */
+  .hero { display:grid; grid-template-columns: 1.1fr .9fr; gap:clamp(2rem,5vw,4rem);
+    align-items:center; padding-top:clamp(3rem,7vh,5.5rem); }
+  .hero h1 { font-size:var(--step-3); margin:.6rem 0 0; }
+  .hero .lede { font-size:var(--step-1); color:var(--ink-soft); margin-top:1.1rem;
+    font-family:var(--serif); font-weight:400; line-height:1.4; }
+  .cta-row { display:flex; flex-wrap:wrap; gap:.8rem; align-items:center; margin-top:1.8rem; }
+  .btn {
+    display:inline-flex; align-items:center; gap:.5rem; font:inherit; font-weight:600;
+    padding:.75rem 1.15rem; border-radius:12px; text-decoration:none; cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-primary { background:var(--sage); color:var(--paper); box-shadow:var(--shadow); }
+  .btn-ghost { background:transparent; color:var(--ink); border-color:var(--line-strong); }
+  .badge {
+    display:inline-flex; align-items:center; gap:.55rem; padding:.55rem .9rem;
+    border:1px solid var(--line-strong); border-radius:12px; background:transparent;
+    color:var(--ink); text-decoration:none;
+  }
+  .badge small { display:block; font-family:var(--mono); font-size:.6rem; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--ink-faint); }
+  .badge b { font-family:var(--serif); font-weight:600; font-size:1rem; line-height:1.1; }
+  .badge svg { width:1.5rem; height:1.5rem; fill:var(--ink); }
+
+  /* ── The rendered app (faithful to the screen board) ─────────────────────── */
+  .device {
+    justify-self:center; width:min(100%, 20rem); background:var(--paper);
+    border:1px solid var(--line-strong); border-radius:34px; padding:.7rem;
+    box-shadow:var(--shadow); position:relative;
+  }
+  .device::before { content:""; position:absolute; top:.85rem; left:50%; transform:translateX(-50%);
+    width:32%; height:.32rem; border-radius:999px; background:var(--line-strong); opacity:.7; }
+  .screen { border-radius:26px; background:var(--paper); padding:1.5rem 1.1rem 1.2rem;
+    border:1px solid var(--line); }
+  .screen-title { font-family:var(--serif); font-size:1.5rem; font-weight:600; }
+  .search { margin:.85rem 0 1rem; padding:.5rem .75rem; border-radius:10px; background:var(--sage-tint);
+    color:var(--ink-faint); font-size:.85rem; display:flex; align-items:center; gap:.45rem; }
+  .person { display:flex; align-items:center; gap:.75rem; padding:.6rem 0; border-top:1px solid var(--line); }
+  .person:first-of-type { border-top:0; }
+  .av { width:2.5rem; height:2.5rem; border-radius:50%; flex:none; display:grid; place-items:center;
+    font-family:var(--serif); font-weight:600; color:var(--ink); font-size:1.05rem; }
+  .p-name { font-family:var(--serif); font-weight:600; font-size:1.02rem; }
+  .p-meta { font-family:var(--mono); font-size:.7rem; color:var(--ink-faint); letter-spacing:.02em;
+    margin-top:.1rem; }
+  .p-when { margin-left:auto; font-family:var(--mono); font-size:.7rem; color:var(--sage); text-align:right; white-space:pre-line; line-height:1.3; }
+
+  /* ── Proof moment ────────────────────────────────────────────────────────── */
+  .proof { background:var(--sage-tint); border-block:1px solid var(--line); }
+  .proof .col { text-align:center; margin-inline:auto; }
+  .proof h2 { font-size:var(--step-2); }
+  .ask { font-family:var(--serif); font-style:italic; font-size:var(--step-1); color:var(--ink); }
+  .answer-card { margin:1.4rem auto 0; max-width:26rem; text-align:left; background:var(--paper);
+    border:1px solid var(--line-strong); border-radius:16px; box-shadow:var(--shadow); overflow:hidden; }
+  .answer-card .ac-head { padding:.85rem 1.1rem; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:.7rem; }
+  .gift { display:flex; gap:.8rem; padding:.7rem 1.1rem; border-top:1px solid var(--line); }
+  .gift:first-of-type { border-top:0; }
+  .gift time { font-family:var(--mono); font-size:.72rem; color:var(--sage); flex:none; width:5.2rem; }
+  .gift span { font-family:var(--serif); }
+  .taps { margin-top:1rem; font-family:var(--mono); font-size:var(--step--1); color:var(--ink-faint);
+    letter-spacing:.05em; }
+
+  /* ── Pillars ─────────────────────────────────────────────────────────────── */
+  .pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.2rem; }
+  .pillar { padding:1.5rem; border:1px solid var(--line); border-radius:16px; background:var(--paper);
+    box-shadow:var(--shadow); }
+  .pillar .k { font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--sage); }
+  .pillar h3 { font-size:var(--step-1); margin:.6rem 0 .5rem; }
+  .pillar p { color:var(--ink-soft); font-size:var(--step--1); line-height:1.55; }
+
+  /* ── Remember gallery ───────────────────────────────────────────────────── */
+  .tags { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.8rem; }
+  .tag { border:1px solid var(--line-strong); border-radius:999px; padding:.5rem .9rem;
+    font-size:var(--step--1); background:var(--paper); }
+  .tag b { font-family:var(--serif); font-weight:600; }
+  .tag .v { font-family:var(--mono); color:var(--sage); font-size:.82em; }
+
+  /* ── Not-list ───────────────────────────────────────────────────────────── */
+  .nots { display:grid; grid-template-columns:repeat(2,1fr); gap:.9rem 2rem; margin-top:1.8rem;
+    list-style:none; padding:0; }
+  .nots li { display:flex; gap:.7rem; align-items:baseline; font-size:var(--step-0); }
+  .nots .x { color:var(--rose); font-family:var(--serif); font-weight:600; flex:none; }
+  .nots b { font-family:var(--serif); font-weight:600; }
+
+  /* ── FAQ ─────────────────────────────────────────────────────────────────── */
+  .faq { display:grid; gap:0; margin-top:1.6rem; border-top:1px solid var(--line); }
+  details { border-bottom:1px solid var(--line); }
+  summary { cursor:pointer; list-style:none; padding:1rem .2rem; font-family:var(--serif);
+    font-weight:600; font-size:var(--step-0); display:flex; justify-content:space-between; gap:1rem; }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:"+"; font-family:var(--mono); color:var(--sage); }
+  details[open] summary::after { content:"–"; }
+  details p { padding:0 .2rem 1.1rem; color:var(--ink-soft); font-size:var(--step--1); line-height:1.6; }
+
+  /* ── Footer ─────────────────────────────────────────────────────────────── */
+  footer { border-top:1px solid var(--line); padding-block:3rem; }
+  .foot { display:flex; flex-wrap:wrap; gap:1.2rem 2rem; align-items:center; }
+  .foot .links { display:flex; flex-wrap:wrap; gap:1.2rem; margin-left:auto; font-size:var(--step--1); }
+  .foot a { text-decoration:none; color:var(--ink-soft); }
+  .foot a:hover { color:var(--sage); }
+  .signoff { font-family:var(--serif); font-style:italic; color:var(--ink-faint); }
+
+  .reveal { opacity:0; transform:translateY(10px); animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes rise { to { opacity:1; transform:none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { animation:none; opacity:1; transform:none; } }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns:1fr; text-align:left; }
+    .device { order:-1; width:min(100%, 17rem); }
+    .pillars, .nots { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-in">
+    <span class="brand"><img src="assets/icon-180.png" alt="Endearly app icon" /> Endearly</span>
+    <span class="bar-spacer"></span>
+    <span class="chip" data-en="Arriving November 2026" data-ja="2026年11月、公開">Arriving November 2026</span>
+    <span class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+    </span>
+  </div>
+</header>
+
+<main>
+  <!-- 1 · HERO -->
+  <section class="wrap hero">
+    <div class="reveal">
+      <span class="eyebrow" data-en="A personal keepsake" data-ja="ひとつの、静かな手帳">A personal keepsake</span>
+      <h1 data-en="Remember the little things about the people you love."
+          data-ja="大切な人の、小さなことを、ずっと。">Remember the little things about the people you love.</h1>
+      <p class="lede"
+         data-en="A quiet, private place for a favorite flower, a shoe size, a past gift, an offhand wish. No account. No subscription. Nothing leaves your phone."
+         data-ja="好きな花、靴のサイズ、前に贈ったもの、ふと漏らした「欲しい」。そっと開くための、静かな手帳。アカウント不要・買い切り・データは端末の外に出ません。">A quiet, private place for a favorite flower, a shoe size, a past gift, an offhand wish. No account. No subscription. Nothing leaves your phone.</p>
+      <div class="cta-row">
+        <a class="badge" href="#" aria-label="Coming to the App Store, November 2026">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.03-2.7 2.2-4 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.11-1.66-.17-3.24.98-4.08.98-.84 0-2.14-.96-3.52-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.97 2.76 3.38 2.7 1.36-.05 1.87-.87 3.51-.87 1.64 0 2.1.87 3.53.85 1.46-.03 2.38-1.32 3.27-2.63 1.03-1.5 1.46-2.96 1.48-3.04-.03-.01-2.84-1.09-2.87-4.32M14.4 4.4c.74-.9 1.24-2.15 1.1-3.4-1.07.04-2.36.71-3.13 1.61-.69.8-1.29 2.07-1.13 3.29 1.19.09 2.42-.6 3.16-1.5"/></svg>
+          <span><small data-en="Coming to the" data-ja="App Store で">Coming to the</small><b>App Store</b></span>
+        </a>
+        <a class="btn btn-ghost" href="#follow" data-en="Follow along →" data-ja="更新を見守る →">Follow along →</a>
+      </div>
+      <p class="taps" style="margin-top:1.4rem" data-en="No email sign-up. We collect nothing — here or in the app."
+         data-ja="メール登録はありません。このサイトでもアプリでも、何も集めません。">No email sign-up. We collect nothing — here or in the app.</p>
+    </div>
+
+    <div class="device reveal" role="img" aria-label="Endearly showing a list of people you care about">
+      <div class="screen">
+        <div class="screen-title" data-en="People" data-ja="大切な人">People</div>
+        <div class="search"><span aria-hidden="true">⌕</span><span data-en="Search" data-ja="検索">Search</span></div>
+        <div class="person">
+          <span class="av" style="background:var(--av1)">M</span>
+          <span><span class="p-name" data-en="Mika" data-ja="美香">Mika</span>
+            <span class="p-meta" data-en="Partner · Apr 3" data-ja="パートナー · 4月3日">Partner · Apr 3</span></span>
+          <span class="p-when" data-en="birthday\nin 6 days" data-ja="誕生日\nあと6日">birthday
+in 6 days</span>
+        </div>
+        <div class="person">
+          <span class="av" style="background:var(--av2)">R</span>
+          <span><span class="p-name" data-en="Ren" data-ja="蓮">Ren</span>
+            <span class="p-meta" data-en="Brother · shoe 27cm" data-ja="弟 · 靴 27cm">Brother · shoe 27cm</span></span>
+        </div>
+        <div class="person">
+          <span class="av" style="background:var(--av3)">A</span>
+          <span><span class="p-name" data-en="Aunt Yui" data-ja="ゆい叔母">Aunt Yui</span>
+            <span class="p-meta" data-en="Loves peonies" data-ja="芍薬が好き">Loves peonies</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · PROOF MOMENT -->
+  <section class="proof">
+    <div class="wrap col">
+      <span class="eyebrow" data-en="The moment it earns its place" data-ja="「書いておいてよかった」の瞬間">The moment it earns its place</span>
+      <h2 style="margin-top:.6rem" class="ask" data-en="“What did I give her last Christmas?”"
+          data-ja="「去年のクリスマス、何をあげたっけ？」">“What did I give her last Christmas?”</h2>
+      <div class="answer-card reveal">
+        <div class="ac-head">
+          <span class="av" style="background:var(--av1); width:2rem; height:2rem; font-size:.9rem">M</span>
+          <span><span class="p-name" data-en="Mika · Gifts" data-ja="美香 · 贈ったもの">Mika · Gifts</span></span>
+        </div>
+        <div class="gift"><time>2025 · 12</time><span data-en="Ceramic pour-over dripper" data-ja="陶器のコーヒードリッパー">Ceramic pour-over dripper</span></div>
+        <div class="gift"><time>2025 · 04</time><span data-en="Peony-print silk scarf" data-ja="芍薬柄のシルクスカーフ">Peony-print silk scarf</span></div>
+        <div class="gift"><time>2024 · 12</time><span data-en="Leather card holder" data-ja="革のカードケース">Leather card holder</span></div>
+      </div>
+      <p class="taps" data-en="Answered in two taps. Never the same gift twice."
+         data-ja="2タップで、答えが出る。同じ贈り物を、二度としない。">Answered in two taps. Never the same gift twice.</p>
+    </div>
+  </section>
+
+  <!-- 3 · PILLARS -->
+  <section class="wrap">
+    <span class="eyebrow" data-en="Why it feels different" data-ja="ほかと違う理由">Why it feels different</span>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="k" data-en="Private" data-ja="プライベート">Private</div>
+        <h3 data-en="Private by architecture" data-ja="設計からして、プライベート">Private by architecture</h3>
+        <p data-en="Everything stays on your device. No cloud, no account, no ads. The App Store label reads “Data Not Collected” — provably, not as a promise."
+           data-ja="すべては端末の中だけ。クラウドも、アカウントも、広告もありません。App Store のラベルは「データを収集しない」——約束ではなく、事実として。">Everything stays on your device. No cloud, no account, no ads. The App Store label reads “Data Not Collected” — provably, not as a promise.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="k" data-en="Yours" data-ja="あなたのもの">Yours</div>
+        <h3 data-en="Buy once, own it" data-ja="買い切り、あなたのもの">Buy once, own it</h3>
+        <p data-en="One small payment, once — never a subscription. You pay with money so you never pay with your attention or your data."
+           data-ja="小さな支払いを、一度だけ。サブスクではありません。お金で払うから、気を取られることも、データを差し出すこともない。">One small payment, once — never a subscription. You pay with money so you never pay with your attention or your data.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="k" data-en="Calm" data-ja="静けさ">Calm</div>
+        <h3 data-en="Calm, like a notebook" data-ja="手帳のように、静か">Calm, like a notebook</h3>
+        <p data-en="No feed, no notifications for their own sake, no gamification. Opening Endearly should feel like opening a personal notebook."
+           data-ja="フィードも、引き止めるための通知も、ゲーム化もありません。Endearly を開くのは、手帳を開くような感覚です。">No feed, no notifications for their own sake, no gamification. Opening Endearly should feel like opening a personal notebook.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="wrap rule" />
+
+  <!-- 4 · WHAT YOU CAN REMEMBER -->
+  <section class="wrap">
+    <div class="col">
+      <span class="eyebrow" data-en="What you can keep" data-ja="覚えておけること">What you can keep</span>
+      <h2 style="font-size:var(--step-2); margin-top:.6rem"
+          data-en="The small, specific things that say you were paying attention."
+          data-ja="ちゃんと見ていた、と伝わる。小さくて、具体的なこと。">The small, specific things that say you were paying attention.</h2>
+    </div>
+    <div class="tags">
+      <span class="tag"><b data-en="Favorite flower" data-ja="好きな花">Favorite flower</b> <span class="v">peonies</span></span>
+      <span class="tag"><b data-en="Shoe size" data-ja="靴のサイズ">Shoe size</b> <span class="v">27cm</span></span>
+      <span class="tag"><b data-en="Birthday" data-ja="誕生日">Birthday</b> <span class="v">Apr 3</span></span>
+      <span class="tag"><b data-en="Coffee" data-ja="コーヒー">Coffee</b> <span class="v">oat, no sugar</span></span>
+      <span class="tag"><b data-en="Wishlist" data-ja="ほしいもの">Wishlist</b> <span class="v">a film camera</span></span>
+      <span class="tag"><b data-en="Allergy" data-ja="アレルギー">Allergy</b> <span class="v">walnuts</span></span>
+      <span class="tag"><b data-en="A thing they said" data-ja="言っていたこと">A thing they said</b> <span class="v">“someday, Lisbon”</span></span>
+    </div>
+    <p class="taps" data-en="Adding a detail takes under twenty seconds. Search finds it instantly."
+       data-ja="ひとつ書き足すのに、20秒もかからない。検索すれば、すぐに見つかる。">Adding a detail takes under twenty seconds. Search finds it instantly.</p>
+  </section>
+
+  <!-- 5 · WHAT IT IS NOT -->
+  <section class="proof">
+    <div class="wrap col">
+      <span class="eyebrow" data-en="Just as important" data-ja="同じくらい大切なこと">Just as important</span>
+      <h2 style="font-size:var(--step-2); margin-top:.6rem"
+          data-en="What Endearly is not." data-ja="Endearly が、そうではないもの。">What Endearly is not.</h2>
+      <ul class="nots">
+        <li><span class="x" aria-hidden="true">✕</span><span><b data-en="Not a social network" data-ja="SNSではない">Not a social network</b><br><span class="muted" data-en="No feed, no followers, no sharing." data-ja="フィードも、フォロワーも、共有もありません。">No feed, no followers, no sharing.</span></span></li>
+        <li><span class="x" aria-hidden="true">✕</span><span><b data-en="Not a CRM" data-ja="CRMではない">Not a CRM</b><br><span class="muted" data-en="It’s for people you love, not leads." data-ja="見込み客ではなく、大切な人のために。">It’s for people you love, not leads.</span></span></li>
+        <li><span class="x" aria-hidden="true">✕</span><span><b data-en="Not another contacts app" data-ja="連絡先アプリでもない">Not another contacts app</b><br><span class="muted" data-en="It remembers, it doesn’t just list." data-ja="並べるのではなく、覚えておくために。">It remembers, it doesn’t just list.</span></span></li>
+        <li><span class="x" aria-hidden="true">✕</span><span><b data-en="Not a subscription" data-ja="サブスクではない">Not a subscription</b><br><span class="muted" data-en="Pay once. It’s simply yours." data-ja="一度だけの支払い。ただ、あなたのものに。">Pay once. It’s simply yours.</span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6 · FAQ + PRIVACY -->
+  <section class="wrap" id="follow">
+    <div class="col">
+      <span class="eyebrow" data-en="Honest answers" data-ja="正直なところ">Honest answers</span>
+      <h2 style="font-size:var(--step-2); margin-top:.6rem" data-en="The questions worth asking." data-ja="聞いておきたいこと。">The questions worth asking.</h2>
+      <div class="faq">
+        <details open><summary data-en="Is my data backed up?" data-ja="データはバックアップされますか？">Is my data backed up?</summary>
+          <p data-en="Your data lives only on your device, so it rides your normal iPhone/iCloud device backup. You can also export an open, portable copy any time — it’s yours to keep or move."
+             data-ja="データは端末の中だけにあり、iPhone/iCloud の通常の端末バックアップに含まれます。いつでも読める形式で書き出すこともできます——保管も、移動も自由です。">Your data lives only on your device, so it rides your normal iPhone/iCloud device backup. You can also export an open, portable copy any time — it’s yours to keep or move.</p></details>
+        <details><summary data-en="What does “Restore Purchase” do?" data-ja="「購入を復元」とは？">What does “Restore Purchase” do?</summary>
+          <p data-en="If you get a new phone or reinstall, one tap restores your one-time unlock through your Apple ID. No account of ours is involved."
+             data-ja="機種変更や再インストールのとき、ワンタップで買い切りのロック解除を Apple ID 経由で復元します。私たち独自のアカウントは一切関係しません。">If you get a new phone or reinstall, one tap restores your one-time unlock through your Apple ID. No account of ours is involved.</p></details>
+        <details><summary data-en="How do I move to a new phone?" data-ja="新しいスマホへの移行は？">How do I move to a new phone?</summary>
+          <p data-en="Restore from your device backup, or export a copy from the old phone and import it on the new one. Two taps either way."
+             data-ja="端末バックアップから復元するか、古い端末で書き出して新しい端末で読み込むだけ。どちらも数タップです。">Restore from your device backup, or export a copy from the old phone and import it on the new one. Two taps either way.</p></details>
+        <details><summary data-en="How much does it cost?" data-ja="いくらですか？">How much does it cost?</summary>
+          <p data-en="Free to start (your first three people). Unlock unlimited people once, forever — no subscription. Pricing is finalized at launch."
+             data-ja="はじめは無料（最初の3人まで）。あとは一度のロック解除で、人数無制限にずっと使えます——サブスクなし。価格は公開時に確定します。">Free to start (your first three people). Unlock unlimited people once, forever — no subscription. Pricing is finalized at launch.</p></details>
+        <details><summary data-en="Do you track me on this website?" data-ja="このサイトで追跡していますか？">Do you track me on this website?</summary>
+          <p data-en="No. This page loads no analytics, no cookies, and makes no third-party requests. The privacy promise starts here."
+             data-ja="いいえ。このページはアナリティクスもCookieもなく、外部への通信も行いません。プライバシーの約束は、ここから始まっています。">No. This page loads no analytics, no cookies, and makes no third-party requests. The privacy promise starts here.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot">
+    <span class="brand" style="font-size:var(--step-0)"><img src="assets/icon-180.png" alt="" /> Endearly</span>
+    <span class="signoff" data-en="Made quietly." data-ja="静かに、つくっています。">Made quietly.</span>
+    <span class="links">
+      <a href="mailto:support@endearly.app" data-en="Support" data-ja="サポート">Support</a>
+      <a href="privacy.html" data-en="Privacy" data-ja="プライバシー">Privacy</a>
+      <a href="press.html" data-en="Press kit" data-ja="プレスキット">Press kit</a>
+      <a href="#" data-en="Instagram">Instagram</a>
+      <a href="#" data-en="Pinterest">Pinterest</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.lang button');
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+        var v = el.getAttribute('data-' + lang);
+        if (v !== null) el.textContent = v.replace(/\\n/g, '\n');
+      });
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+      });
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+    });
+  })();
+</script>
+
+</body>
+</html>

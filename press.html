@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Press kit — Endearly</title>
+<meta name="description" content="Press kit for Endearly — a private, offline iOS keepsake for remembering the little things about the people you love. Description, pillars, fact sheet, and assets." />
+<link rel="canonical" href="https://endearly.app/press.html" />
+<meta name="robots" content="index,follow" />
+
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F2E8" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2721" />
+<link rel="icon" type="image/png" sizes="180x180" href="assets/icon-180.png" />
+<link rel="apple-touch-icon" href="assets/icon-180.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Endearly" />
+<meta property="og:title" content="Press kit — Endearly" />
+<meta property="og:description" content="A private, offline iOS keepsake for the little things about the people you love." />
+<meta property="og:url" content="https://endearly.app/press.html" />
+<meta property="og:image" content="https://endearly.app/assets/icon-512.png" />
+<style>
+  :root {
+    --paper:#F7F2E8; --ink:#2E2A24; --ink-soft:#6B6459; --ink-faint:#98907F;
+    --line:#E2D9C6; --line-strong:#D3C8B0; --sage:#6E7B5B; --sage-tint:#E6E9DC;
+    --serif:ui-serif,"New York",Georgia,"Hiragino Mincho ProN",serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+    --shadow:0 1px 2px rgba(60,50,30,.05),0 8px 24px rgba(60,50,30,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#2B2721; --ink:#ECE5D6; --ink-soft:#ADA491; --ink-faint:#867E6E;
+      --line:#403A31; --line-strong:#4E4638; --sage:#A0AC83; --sage-tint:#343023;
+      --shadow:0 1px 2px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.25); }
+  }
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{ margin:0; background:var(--paper); color:var(--ink);
+    font-family:system-ui,-apple-system,"Hiragino Sans",sans-serif; line-height:1.6;
+    font-size:clamp(1rem,.96rem + .2vw,1.06rem); }
+  .wrap{ width:min(100% - 2.4rem, 48rem); margin-inline:auto; }
+  a{ color:var(--sage); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--sage); outline-offset:3px; border-radius:4px; }
+  h1,h2,h3{ font-family:var(--serif); font-weight:600; line-height:1.15; letter-spacing:-.01em; }
+  h1{ font-size:clamp(1.8rem,1.4rem + 1.6vw,2.5rem); margin:0 0 .4rem; }
+  h2{ font-size:1.3rem; margin:2.4rem 0 .8rem; padding-top:1.4rem; border-top:1px solid var(--line); }
+  h3{ font-size:1rem; margin:0 0 .3rem; }
+  p{ margin:.7rem 0; }
+  p.lede{ color:var(--ink-soft); font-family:var(--serif); font-size:1.15rem; margin-top:0; }
+  .eyebrow{ font-family:var(--mono); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--sage); }
+
+  header.bar{ position:sticky; top:0; z-index:20; backdrop-filter:saturate(1.1) blur(8px);
+    background:color-mix(in srgb, var(--paper) 86%, transparent); border-bottom:1px solid var(--line); }
+  .bar-in{ display:flex; align-items:center; gap:1rem; padding:.7rem 0; }
+  .brand{ display:flex; align-items:center; gap:.6rem; font-family:var(--serif); font-weight:600;
+    font-size:1.15rem; color:var(--ink); }
+  .brand img{ width:1.7em; height:1.7em; border-radius:23%; box-shadow:var(--shadow); }
+  .bar-spacer{ flex:1; }
+  .lang{ display:inline-flex; border:1px solid var(--line-strong); border-radius:999px; overflow:hidden;
+    font-family:var(--mono); font-size:.72rem; }
+  .lang button{ appearance:none; border:0; background:transparent; color:var(--ink-soft);
+    padding:.34rem .62rem; cursor:pointer; font:inherit; letter-spacing:.06em; }
+  .lang button[aria-pressed="true"]{ background:var(--sage); color:var(--paper); }
+
+  main{ padding-block:clamp(2.5rem,6vh,4rem); }
+  blockquote{ margin:1rem 0; padding:.2rem 0 .2rem 1.1rem; border-left:3px solid var(--line-strong);
+    font-family:var(--serif); font-style:italic; color:var(--ink-soft); }
+  .pillars{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1rem 0; }
+  .pillar{ border:1px solid var(--line); border-radius:14px; padding:1.1rem; background:var(--paper); box-shadow:var(--shadow); }
+  .pillar .k{ font-family:var(--mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--sage); }
+  .pillar p{ font-size:.92rem; color:var(--ink-soft); margin:.4rem 0 0; }
+  dl.facts{ display:grid; grid-template-columns:max-content 1fr; gap:.55rem 1.2rem; margin:1rem 0; }
+  dl.facts dt{ font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--ink-faint); padding-top:.15rem; }
+  dl.facts dd{ margin:0; }
+  .assets{ display:flex; flex-wrap:wrap; gap:1rem; align-items:center; margin:1rem 0; }
+  .assets a{ display:inline-flex; align-items:center; gap:.6rem; border:1px solid var(--line-strong);
+    border-radius:12px; padding:.6rem .9rem; color:var(--ink); }
+  .assets img{ width:2.4rem; height:2.4rem; border-radius:22%; box-shadow:var(--shadow); }
+  .assets small{ display:block; font-family:var(--mono); font-size:.66rem; color:var(--ink-faint); letter-spacing:.05em; }
+  .note{ font-size:.9rem; color:var(--ink-faint); }
+
+  footer{ border-top:1px solid var(--line); padding-block:2.4rem; margin-top:3rem; }
+  .foot{ display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; font-size:.9rem; }
+  .foot .signoff{ font-family:var(--serif); font-style:italic; color:var(--ink-faint); }
+  .foot .links{ margin-left:auto; display:flex; gap:1.2rem; }
+  .foot a{ color:var(--ink-soft); }
+  @media (max-width:620px){ .pillars{ grid-template-columns:1fr; } dl.facts{ grid-template-columns:1fr; gap:.15rem; } dl.facts dd{ margin-bottom:.6rem; } }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="brand" href="index.html"><img src="assets/icon-180.png" alt="Endearly app icon" /> Endearly</a>
+    <span class="bar-spacer"></span>
+    <span class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+    </span>
+  </div>
+</header>
+
+<main class="wrap">
+  <span class="eyebrow" data-en="Press kit" data-ja="プレスキット">Press kit</span>
+  <h1 data-en="Endearly" data-ja="Endearly">Endearly</h1>
+  <p class="lede"
+     data-en="A quiet, private iOS keepsake for remembering the little things about the people you love."
+     data-ja="大切な人の小さなことを、そっと覚えておく——静かでプライベートな iOS の手帳。">A quiet, private iOS keepsake for remembering the little things about the people you love.</p>
+
+  <h2 data-en="What it is" data-ja="どんなアプリか">What it is</h2>
+  <p data-en="Endearly is a personal notebook for the people who matter — a favorite flower, a shoe size, a past gift, an offhand wish. Everything lives only on your device: no account, no cloud, no ads, no tracking. Its App Store privacy label reads “Data Not Collected”, provably, because it is built without a server to collect anything. It is bought once, not rented by subscription. Deliberately, it is not a social network, not a CRM, and not another contacts app — it exists to help you be thoughtful, not productive."
+     data-ja="Endearly は、大切な人のための手帳です——好きな花、靴のサイズ、前に贈ったもの、ふと漏らした「欲しい」。すべては端末の中だけにあり、アカウントも、クラウドも、広告も、トラッキングもありません。App Store のプライバシーラベルは「データを収集しない」——集めるためのサーバーがそもそも無いので、約束ではなく事実です。買い切りで、サブスクではありません。あえて、SNSでも、CRMでも、ただの連絡先アプリでもありません。生産性のためではなく、思いやりのために存在します。">Endearly is a personal notebook for the people who matter — a favorite flower, a shoe size, a past gift, an offhand wish. Everything lives only on your device: no account, no cloud, no ads, no tracking. Its App Store privacy label reads “Data Not Collected”, provably, because it is built without a server to collect anything. It is bought once, not rented by subscription. Deliberately, it is not a social network, not a CRM, and not another contacts app — it exists to help you be thoughtful, not productive.</p>
+
+  <h2 data-en="The three things that make it different" data-ja="ほかと違う、三つのこと">The three things that make it different</h2>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="k" data-en="Private" data-ja="プライベート">Private</div>
+      <h3 data-en="Private by architecture" data-ja="設計からして、プライベート">Private by architecture</h3>
+      <p data-en="No cloud, no account, no ads. “Data Not Collected” — a fact, not a promise."
+         data-ja="クラウドも、アカウントも、広告もなし。「データを収集しない」——約束ではなく、事実。">No cloud, no account, no ads. “Data Not Collected” — a fact, not a promise.</p>
+    </div>
+    <div class="pillar">
+      <div class="k" data-en="Yours" data-ja="あなたのもの">Yours</div>
+      <h3 data-en="Buy once, own it" data-ja="買い切り、あなたのもの">Buy once, own it</h3>
+      <p data-en="One small payment, once. You pay with money, never with your attention or data."
+         data-ja="小さな支払いを、一度だけ。お金で払うから、注意やデータで払わずに済む。">One small payment, once. You pay with money, never with your attention or data.</p>
+    </div>
+    <div class="pillar">
+      <div class="k" data-en="Calm" data-ja="静けさ">Calm</div>
+      <h3 data-en="Calm, like a notebook" data-ja="手帳のように、静か">Calm, like a notebook</h3>
+      <p data-en="No feed, no notifications for their own sake, no gamification."
+         data-ja="フィードも、引き止める通知も、ゲーム化もなし。">No feed, no notifications for their own sake, no gamification.</p>
+    </div>
+  </div>
+
+  <h2 data-en="Fact sheet" data-ja="ファクトシート">Fact sheet</h2>
+  <dl class="facts">
+    <dt data-en="Name" data-ja="名称">Name</dt><dd>Endearly</dd>
+    <dt data-en="Platform" data-ja="対応">Platform</dt><dd data-en="iPhone, iOS 17+ (iPad and Mac not at launch)" data-ja="iPhone、iOS 17以降（iPad・Mac は公開時点では非対応）">iPhone, iOS 17+ (iPad and Mac not at launch)</dd>
+    <dt data-en="Price" data-ja="価格">Price</dt><dd data-en="Free to start (first three people); one-time unlock for unlimited — no subscription. Final price set at launch." data-ja="はじめは無料（最初の3人まで）。人数無制限は一度きりのロック解除——サブスクなし。最終価格は公開時に確定。">Free to start (first three people); one-time unlock for unlimited — no subscription. Final price set at launch.</dd>
+    <dt data-en="Privacy" data-ja="プライバシー">Privacy</dt><dd data-en="“Data Not Collected” — offline, on-device only, no account, no analytics." data-ja="「データを収集しない」——オフライン、端末内のみ、アカウントなし、アナリティクスなし。">“Data Not Collected” — offline, on-device only, no account, no analytics.</dd>
+    <dt data-en="Markets" data-ja="対応地域">Markets</dt><dd data-en="English and Japanese at launch." data-ja="公開時点で、英語と日本語。">English and Japanese at launch.</dd>
+    <dt data-en="Availability" data-ja="公開">Availability</dt><dd data-en="Arriving November 2026 on the App Store." data-ja="2026年11月、App Store にて公開予定。">Arriving November 2026 on the App Store.</dd>
+    <dt data-en="Built with" data-ja="技術">Built with</dt><dd data-en="Native Swift &amp; SwiftUI. No third-party SDKs." data-ja="ネイティブ Swift / SwiftUI。サードパーティSDKなし。">Native Swift &amp; SwiftUI. No third-party SDKs.</dd>
+  </dl>
+
+  <h2 data-en="A line you can quote" data-ja="引用できる一文">A line you can quote</h2>
+  <blockquote data-en="“The only private, buy-once keepsake for the people you love — not a CRM, not a subscription, and your data never leaves your phone.”"
+     data-ja="「大切な人のための、唯一のプライベートな買い切りの手帳——CRMでも、サブスクでもなく、データは決して端末の外に出ない。」">“The only private, buy-once keepsake for the people you love — not a CRM, not a subscription, and your data never leaves your phone.”</blockquote>
+
+  <h2 data-en="Assets" data-ja="素材">Assets</h2>
+  <div class="assets">
+    <a href="assets/icon-1024.png" download>
+      <img src="assets/icon-512.png" alt="Endearly app icon" />
+      <span><b data-en="App icon" data-ja="アプリアイコン">App icon</b><small>PNG · 1024×1024</small></span>
+    </a>
+  </div>
+  <p class="note" data-en="High-resolution screenshots and a short screen-recording of the app are available on request — email us and tell us your outlet and deadline."
+     data-ja="高解像度のスクリーンショットと短い画面録画は、ご請求に応じてお送りします——媒体名と締め切りを添えてメールください。">High-resolution screenshots and a short screen-recording of the app are available on request — email us and tell us your outlet and deadline.</p>
+
+  <h2 data-en="Contact" data-ja="お問い合わせ">Contact</h2>
+  <p data-en="Press &amp; general, English or 日本語:" data-ja="取材・お問い合わせ（日本語・英語）:">Press &amp; general, English or 日本語:</p>
+  <p><a href="mailto:support@endearly.app">support@endearly.app</a></p>
+</main>
+
+<footer class="wrap">
+  <div class="foot">
+    <span class="signoff" data-en="Made quietly." data-ja="静かに、つくっています。">Made quietly.</span>
+    <span class="links">
+      <a href="index.html" data-en="Home" data-ja="ホーム">Home</a>
+      <a href="privacy.html" data-en="Privacy" data-ja="プライバシー">Privacy</a>
+      <a href="mailto:support@endearly.app" data-en="Support" data-ja="サポート">Support</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.lang button');
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+        var v = el.getAttribute('data-' + lang);
+        if (v !== null) el.textContent = v.replace(/\\n/g, '\n');
+      });
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+      });
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+    });
+  })();
+</script>
+</body>
+</html>
