@@ -79,6 +79,12 @@
     border-radius:12px; padding:.6rem .9rem; color:var(--ink); }
   .assets img{ width:2.4rem; height:2.4rem; border-radius:22%; box-shadow:var(--shadow); }
   .assets small{ display:block; font-family:var(--mono); font-size:.66rem; color:var(--ink-faint); letter-spacing:.05em; }
+  .gallery{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1rem 0; }
+  .gallery figure{ margin:0; display:flex; flex-direction:column; align-items:center; overflow:hidden;
+    border:1px solid var(--line); border-radius:14px; background:var(--sage-tint); box-shadow:var(--shadow); }
+  .gallery img{ display:block; width:auto; max-width:100%; height:30rem; object-fit:contain; }
+  .gallery figcaption{ align-self:stretch; padding:.65rem .8rem; border-top:1px solid var(--line);
+    background:var(--paper); color:var(--ink-soft); font-size:.84rem; text-align:center; }
   .note{ font-size:.9rem; color:var(--ink-faint); }
 
   footer{ border-top:1px solid var(--line); padding-block:2.4rem; margin-top:3rem; }
@@ -86,7 +92,9 @@
   .foot .signoff{ font-family:var(--serif); font-style:italic; color:var(--ink-faint); }
   .foot .links{ margin-left:auto; display:flex; gap:1.2rem; }
   .foot a{ color:var(--ink-soft); }
-  @media (max-width:620px){ .pillars{ grid-template-columns:1fr; } dl.facts{ grid-template-columns:1fr; gap:.15rem; } dl.facts dd{ margin-bottom:.6rem; } }
+  @media (max-width:620px){ .pillars{ grid-template-columns:1fr; } .gallery{ grid-template-columns:1fr; }
+    .gallery img{ height:auto; max-height:34rem; } dl.facts{ grid-template-columns:1fr; gap:.15rem; }
+    dl.facts dd{ margin-bottom:.6rem; } }
 </style>
 </head>
 <body>
@@ -138,7 +146,7 @@
   <dl class="facts">
     <dt data-en="Name" data-ja="名称">Name</dt><dd>Endearly</dd>
     <dt data-en="Platform" data-ja="対応">Platform</dt><dd data-en="iPhone, iOS 17+ (iPad and Mac not at launch)" data-ja="iPhone、iOS 17以降（iPad・Mac は公開時点では非対応）">iPhone, iOS 17+ (iPad and Mac not at launch)</dd>
-    <dt data-en="Price" data-ja="価格">Price</dt><dd data-en="Free to start (first three people); one-time unlock for unlimited — no subscription. Final price set at launch." data-ja="はじめは無料（最初の3人まで）。人数無制限は一度きりのロック解除——サブスクなし。最終価格は公開時に確定。">Free to start (first three people); one-time unlock for unlimited — no subscription. Final price set at launch.</dd>
+    <dt data-en="Price" data-ja="価格">Price</dt><dd data-en="Free for the first three people; one-time US$4.99 unlock for unlimited — no subscription." data-ja="最初の3人までは無料。人数無制限は US$4.99 の買い切り——サブスクなし。">Free for the first three people; one-time US$4.99 unlock for unlimited — no subscription.</dd>
     <dt data-en="Privacy" data-ja="プライバシー">Privacy</dt><dd data-en="“Data Not Collected” — offline, on-device only, no account, no analytics." data-ja="「データを収集しない」——オフライン、端末内のみ、アカウントなし、アナリティクスなし。">“Data Not Collected” — offline, on-device only, no account, no analytics.</dd>
     <dt data-en="Markets" data-ja="対応地域">Markets</dt><dd data-en="English and Japanese at launch." data-ja="公開時点で、英語と日本語。">English and Japanese at launch.</dd>
     <dt data-en="Availability" data-ja="公開">Availability</dt><dd data-en="Arriving November 2026 on the App Store." data-ja="2026年11月、App Store にて公開予定。">Arriving November 2026 on the App Store.</dd>
@@ -146,8 +154,34 @@
   </dl>
 
   <h2 data-en="A line you can quote" data-ja="引用できる一文">A line you can quote</h2>
-  <blockquote data-en="“The only private, buy-once keepsake for the people you love — not a CRM, not a subscription, and your data never leaves your phone.”"
-     data-ja="「大切な人のための、唯一のプライベートな買い切りの手帳——CRMでも、サブスクでもなく、データは決して端末の外に出ない。」">“The only private, buy-once keepsake for the people you love — not a CRM, not a subscription, and your data never leaves your phone.”</blockquote>
+  <blockquote data-en="“A private, buy-once keepsake for the people you love — not a CRM, not a subscription, and your data never leaves your phone.”"
+     data-ja="「大切な人のための、プライベートな買い切りの手帳——CRMでも、サブスクでもなく、データは決して端末の外に出ない。」">“A private, buy-once keepsake for the people you love — not a CRM, not a subscription, and your data never leaves your phone.”</blockquote>
+
+  <h2 data-en="Screenshots" data-ja="スクリーンショット">Screenshots</h2>
+  <p data-en="Current English-language captures from the shipped app. Full-resolution files are included in the download below."
+     data-ja="現在のアプリを英語表示で撮影したスクリーンショットです。下のダウンロードには、フル解像度のファイルが含まれています。">Current English-language captures from the shipped app. Full-resolution files are included in the download below.</p>
+  <div class="gallery">
+    <figure>
+      <img src="assets/press/people.png" width="276" height="600" loading="lazy" decoding="async"
+           alt="Endearly people list screen" data-alt-en="Endearly people list screen" data-alt-ja="Endearly の人物一覧画面" />
+      <figcaption data-en="People" data-ja="人物一覧">People</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/press/detail.png" width="276" height="600" loading="lazy" decoding="async"
+           alt="Endearly person details screen" data-alt-en="Endearly person details screen" data-alt-ja="Endearly の人物詳細画面" />
+      <figcaption data-en="Person details" data-ja="人物の詳細">Person details</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/press/quickadd.png" width="495" height="600" loading="lazy" decoding="async"
+           alt="Endearly Quick Add screen" data-alt-en="Endearly Quick Add screen" data-alt-ja="Endearly のクイック追加画面" />
+      <figcaption data-en="Quick Add" data-ja="クイック追加">Quick Add</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/press/unlock.png" width="276" height="600" loading="lazy" decoding="async"
+           alt="Endearly one-time unlock screen" data-alt-en="Endearly one-time unlock screen" data-alt-ja="Endearly の買い切りロック解除画面" />
+      <figcaption data-en="One-time unlock" data-ja="買い切りのロック解除">One-time unlock</figcaption>
+    </figure>
+  </div>
 
   <h2 data-en="Assets" data-ja="素材">Assets</h2>
   <div class="assets">
@@ -155,9 +189,12 @@
       <img src="assets/icon-512.png" alt="Endearly app icon" />
       <span><b data-en="App icon" data-ja="アプリアイコン">App icon</b><small>PNG · 1024×1024</small></span>
     </a>
+    <a href="press/endearly-press-kit.zip" download>
+      <span><b data-en="Download press kit" data-ja="プレスキットをダウンロード">Download press kit</b><small data-en="ZIP · screenshots, icon, fact sheet" data-ja="ZIP · スクリーンショット、アイコン、ファクトシート">ZIP · screenshots, icon, fact sheet</small></span>
+    </a>
   </div>
-  <p class="note" data-en="High-resolution screenshots and a short screen-recording of the app are available on request — email us and tell us your outlet and deadline."
-     data-ja="高解像度のスクリーンショットと短い画面録画は、ご請求に応じてお送りします——媒体名と締め切りを添えてメールください。">High-resolution screenshots and a short screen-recording of the app are available on request — email us and tell us your outlet and deadline.</p>
+  <p class="note" data-en="Download the high-resolution screenshots, app icon, and fact sheet above. For bespoke requests, email us with your outlet and deadline."
+     data-ja="高解像度のスクリーンショット、アプリアイコン、ファクトシートは上からダウンロードできます。個別のご依頼は、媒体名と締め切りを添えてメールください。">Download the high-resolution screenshots, app icon, and fact sheet above. For bespoke requests, email us with your outlet and deadline.</p>
 
   <h2 data-en="Contact" data-ja="お問い合わせ">Contact</h2>
   <p data-en="Press &amp; general, English or 日本語:" data-ja="取材・お問い合わせ（日本語・英語）:">Press &amp; general, English or 日本語:</p>
@@ -183,6 +220,9 @@
       document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
         var v = el.getAttribute('data-' + lang);
         if (v !== null) el.textContent = v.replace(/\\n/g, '\n');
+      });
+      document.querySelectorAll('[data-alt-' + lang + ']').forEach(function (el) {
+        el.setAttribute('alt', el.getAttribute('data-alt-' + lang));
       });
       buttons.forEach(function (b) {
         b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));

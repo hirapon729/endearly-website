@@ -260,8 +260,12 @@
     </div>
 
     <div class="device reveal">
-      <img class="shot" src="assets/shot-people.png" width="1000" height="1019"
-           alt="A real screenshot of Endearly's People screen — a warm, paper-toned list of the people you're remembering, each shown with their relationship: Mika (Partner), Ren (Family), Yui (Friend)." />
+      <img class="shot" src="assets/shot-people.png"
+           data-src-en="assets/shot-people.png" data-src-ja="assets/shot-people-ja.png"
+           width="1000" height="985"
+           alt="Screenshot of Endearly's Your People screen showing Mika (Partner), Ren (Family), and Yui (Friend)."
+           data-alt-en="Screenshot of Endearly's Your People screen showing Mika (Partner), Ren (Family), and Yui (Friend)."
+           data-alt-ja="Endearlyの「大切な人たち」画面。ゆい（友人）、ミカ（パートナー）、蓮（家族）の3人が表示されています。" />
     </div>
   </section>
 
@@ -398,6 +402,11 @@
       document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
         var v = el.getAttribute('data-' + lang);
         if (v !== null) el.textContent = v.replace(/\\n/g, '\n');
+      });
+      ['src', 'alt'].forEach(function (attr) {
+        document.querySelectorAll('[data-' + attr + '-' + lang + ']').forEach(function (el) {
+          el.setAttribute(attr, el.getAttribute('data-' + attr + '-' + lang));
+        });
       });
       buttons.forEach(function (b) {
         b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));

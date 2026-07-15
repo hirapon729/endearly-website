@@ -1,0 +1,23 @@
+Endearly press kit
+==================
+
+Name
+Endearly
+
+One-liner
+A private, offline iOS keepsake for remembering the little things about the people you love.
+
+Platform
+iPhone, iOS 17+
+
+Price
+Free for the first three people; one-time US$4.99 unlock for unlimited. No subscription.
+
+Privacy
+Data Not Collected. Endearly works offline, stores data only on the device, and requires no account. Nothing leaves the device.
+
+Contact
+support@endearly.app
+
+Website
+endearly.app
